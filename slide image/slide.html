@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Image Slider in js</title>
+  </head>
+  <body>
+    <main>
+      <img src="https://picsum.photos/200/300" class="slide" />
+      <img src="https://picsum.photos/265/300" class="slide" />
+      <img src="https://picsum.photos/235/300" class="slide" />
+      <img src="https://picsum.photos/285/300" class="slide" />
+      <img src="https://picsum.photos/284/300" class="slide" />
+    </main>
+    <div class="nav">
+      <button onclick="goPrev()">Prev</button>
+      <button onclick="goNext()">Next</button>
+    </div>
+  </body>
+  <script>
+    const slides = document.querySelectorAll(".slide");
+    var counter = 0;
+    slides.forEach(
+        (slide, index) => {
+      slide.style.left = `${index * 100}%`
+    });
+
+    const goPrev = () => {
+      counter--
+      slideImage();
+    };
+
+    const goNext = () => {
+      counter++
+      slideImage();
+    };
+
+    const slideImage = () => {
+      slides.forEach((slide) => {
+        slide.style.transform = `translateX(-${counter * 100}%)`;
+      });
+    };
+  </script>
+</html>
